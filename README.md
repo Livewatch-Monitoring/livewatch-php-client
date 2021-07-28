@@ -120,5 +120,5 @@ vendor/bin/phpunit
 ```
 
 - API version: `1.0.0`
-    - Package version: `1.0.4`
+    - Package version: `1.0.5`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`
