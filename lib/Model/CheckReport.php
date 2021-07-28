@@ -1,6 +1,6 @@
 <?php
 /**
- * Check
+ * CheckReport
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \LivewatchApi\ObjectSerializer;
 
 /**
- * Check Class Doc Comment
+ * CheckReport Class Doc Comment
  *
  * @category Class
  * @package  LivewatchApi
@@ -42,7 +42,7 @@ use \LivewatchApi\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Check implements ModelInterface, ArrayAccess, \JsonSerializable
+class CheckReport implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class Check implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Check';
+    protected static $openAPIModelName = 'CheckReport';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,15 +59,9 @@ class Check implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'uuid' => 'string',
-        'check_type' => 'string',
-        'last_update' => 'string',
-        'active' => 'bool',
-        'status' => 'int',
-        'stats' => '\LivewatchApi\Model\CheckReport[]',
-        'check_type' => 'string',
-        'last_update' => 'string'
+        'count' => 'int',
+        'avg_check_time' => 'float',
+        'type' => 'string'
     ];
 
     /**
@@ -78,15 +72,9 @@ class Check implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'uuid' => null,
-        'check_type' => null,
-        'last_update' => null,
-        'active' => null,
-        'status' => null,
-        'stats' => null,
-        'check_type' => null,
-        'last_update' => null
+        'count' => null,
+        'avg_check_time' => 'float',
+        'type' => null
     ];
 
     /**
@@ -116,15 +104,9 @@ class Check implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'uuid' => 'uuid',
-        'check_type' => 'check_type',
-        'last_update' => 'last_update',
-        'active' => 'active',
-        'status' => 'status',
-        'stats' => 'stats',
-        'check_type' => 'checkType',
-        'last_update' => 'lastUpdate'
+        'count' => 'count',
+        'avg_check_time' => 'avg_check_time',
+        'type' => 'type'
     ];
 
     /**
@@ -133,15 +115,9 @@ class Check implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'uuid' => 'setUuid',
-        'check_type' => 'setCheckType',
-        'last_update' => 'setLastUpdate',
-        'active' => 'setActive',
-        'status' => 'setStatus',
-        'stats' => 'setStats',
-        'check_type' => 'setCheckType',
-        'last_update' => 'setLastUpdate'
+        'count' => 'setCount',
+        'avg_check_time' => 'setAvgCheckTime',
+        'type' => 'setType'
     ];
 
     /**
@@ -150,15 +126,9 @@ class Check implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'uuid' => 'getUuid',
-        'check_type' => 'getCheckType',
-        'last_update' => 'getLastUpdate',
-        'active' => 'getActive',
-        'status' => 'getStatus',
-        'stats' => 'getStats',
-        'check_type' => 'getCheckType',
-        'last_update' => 'getLastUpdate'
+        'count' => 'getCount',
+        'avg_check_time' => 'getAvgCheckTime',
+        'type' => 'getType'
     ];
 
     /**
@@ -218,15 +188,9 @@ class Check implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['uuid'] = $data['uuid'] ?? null;
-        $this->container['check_type'] = $data['check_type'] ?? null;
-        $this->container['last_update'] = $data['last_update'] ?? null;
-        $this->container['active'] = $data['active'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['stats'] = $data['stats'] ?? null;
-        $this->container['check_type'] = $data['check_type'] ?? null;
-        $this->container['last_update'] = $data['last_update'] ?? null;
+        $this->container['count'] = $data['count'] ?? null;
+        $this->container['avg_check_time'] = $data['avg_check_time'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
     }
 
     /**
@@ -254,217 +218,73 @@ class Check implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets uuid
-     *
-     * @return string|null
-     */
-    public function getUuid()
-    {
-        return $this->container['uuid'];
-    }
-
-    /**
-     * Sets uuid
-     *
-     * @param string|null $uuid uuid
-     *
-     * @return self
-     */
-    public function setUuid($uuid)
-    {
-        $this->container['uuid'] = $uuid;
-
-        return $this;
-    }
-
-    /**
-     * Gets check_type
-     *
-     * @return string|null
-     */
-    public function getCheckType()
-    {
-        return $this->container['check_type'];
-    }
-
-    /**
-     * Sets check_type
-     *
-     * @param string|null $check_type check_type
-     *
-     * @return self
-     */
-    public function setCheckType($check_type)
-    {
-        $this->container['check_type'] = $check_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_update
-     *
-     * @return string|null
-     */
-    public function getLastUpdate()
-    {
-        return $this->container['last_update'];
-    }
-
-    /**
-     * Sets last_update
-     *
-     * @param string|null $last_update last_update
-     *
-     * @return self
-     */
-    public function setLastUpdate($last_update)
-    {
-        $this->container['last_update'] = $last_update;
-
-        return $this;
-    }
-
-    /**
-     * Gets active
-     *
-     * @return bool|null
-     */
-    public function getActive()
-    {
-        return $this->container['active'];
-    }
-
-    /**
-     * Sets active
-     *
-     * @param bool|null $active active
-     *
-     * @return self
-     */
-    public function setActive($active)
-    {
-        $this->container['active'] = $active;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
+     * Gets count
      *
      * @return int|null
      */
-    public function getStatus()
+    public function getCount()
     {
-        return $this->container['status'];
+        return $this->container['count'];
     }
 
     /**
-     * Sets status
+     * Sets count
      *
-     * @param int|null $status status
+     * @param int|null $count count
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setCount($count)
     {
-        $this->container['status'] = $status;
+        $this->container['count'] = $count;
 
         return $this;
     }
 
     /**
-     * Gets stats
+     * Gets avg_check_time
      *
-     * @return \LivewatchApi\Model\CheckReport[]|null
+     * @return float|null
      */
-    public function getStats()
+    public function getAvgCheckTime()
     {
-        return $this->container['stats'];
+        return $this->container['avg_check_time'];
     }
 
     /**
-     * Sets stats
+     * Sets avg_check_time
      *
-     * @param \LivewatchApi\Model\CheckReport[]|null $stats stats
+     * @param float|null $avg_check_time avg_check_time
      *
      * @return self
      */
-    public function setStats($stats)
+    public function setAvgCheckTime($avg_check_time)
     {
-        $this->container['stats'] = $stats;
+        $this->container['avg_check_time'] = $avg_check_time;
 
         return $this;
     }
 
     /**
-     * Gets check_type
+     * Gets type
      *
      * @return string|null
      */
-    public function getCheckType()
+    public function getType()
     {
-        return $this->container['check_type'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets check_type
+     * Sets type
      *
-     * @param string|null $check_type check_type
+     * @param string|null $type type
      *
      * @return self
      */
-    public function setCheckType($check_type)
+    public function setType($type)
     {
-        $this->container['check_type'] = $check_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_update
-     *
-     * @return string|null
-     */
-    public function getLastUpdate()
-    {
-        return $this->container['last_update'];
-    }
-
-    /**
-     * Sets last_update
-     *
-     * @param string|null $last_update last_update
-     *
-     * @return self
-     */
-    public function setLastUpdate($last_update)
-    {
-        $this->container['last_update'] = $last_update;
+        $this->container['type'] = $type;
 
         return $this;
     }

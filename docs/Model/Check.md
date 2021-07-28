@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **last_update** | **string** |  | [optional]
 **active** | **bool** |  | [optional]
 **status** | **int** |  | [optional]
+**stats** | [**\LivewatchApi\Model\CheckReport[]**](CheckReport.md) |  | [optional]
 **check_type** | **string** |  | [optional]
 **last_update** | **string** |  | [optional]
 
