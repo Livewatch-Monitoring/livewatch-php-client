@@ -83,7 +83,7 @@ class Configuration
      *
      * @var string
      */
-    protected $host = 'http://localhost';
+    protected $host = 'https://www.livewatch.de';
 
     /**
      * User agent of the HTTP request, set to "OpenAPI-Generator/{version}/PHP" by default
@@ -439,8 +439,8 @@ class Configuration
     {
         return [
             [
-                "url" => "",
-                "description" => "No description provided",
+                "url" => "https://www.livewatch.de",
+                "description" => "Livewatch.de API over HTTPS",
             ]
         ];
     }
