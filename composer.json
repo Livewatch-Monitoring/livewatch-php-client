@@ -13,7 +13,7 @@
         "server monitor"
     ],
     "homepage": "https://www.livewatch.de",
-    "license": "unlicense",
+    "license": "MIT",
     "authors": [
         {
             "name": "Livewatch",

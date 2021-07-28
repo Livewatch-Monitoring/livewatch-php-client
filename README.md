@@ -2,6 +2,9 @@
 
 Livewatch Server Monitoring API
 
+For more information, please visit [https://www.livewatch.de](https://www.livewatch.de).
+
+[![Livewatch Server Monitoring](assets/logo.png)](https://www.livewatch.de)
 
 ## Installation & Usage
 
@@ -40,6 +43,13 @@ require_once('/path/to/LivewatchApi/vendor/autoload.php');
 ```
 
 ## Getting Started
+
+### Register your free account
+
+To receive an API-Token, register a free account at https://www.livewatch.de
+After registration you will find your personal API token at https://www.livewatch.de/profile
+
+### First steps
 
 Please follow the [installation procedure](#installation--usage) and then run the following:
 
