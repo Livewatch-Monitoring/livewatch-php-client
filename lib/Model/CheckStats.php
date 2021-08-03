@@ -1,6 +1,6 @@
 <?php
 /**
- * Check
+ * CheckStats
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \LivewatchApi\ObjectSerializer;
 
 /**
- * Check Class Doc Comment
+ * CheckStats Class Doc Comment
  *
  * @category Class
  * @package  LivewatchApi
@@ -42,7 +42,7 @@ use \LivewatchApi\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Check implements ModelInterface, ArrayAccess, \JsonSerializable
+class CheckStats implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class Check implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Check';
+    protected static $openAPIModelName = 'CheckStats';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,15 +59,12 @@ class Check implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'uuid' => 'string',
-        'check_type' => 'string',
-        'last_update' => 'string',
-        'active' => 'bool',
-        'status' => 'int',
-        'stats' => '\LivewatchApi\Model\CheckStats[]',
-        'check_type' => 'string',
-        'last_update' => 'string'
+        'date' => 'string',
+        'unknown' => 'int',
+        'ok' => 'int',
+        'warning' => 'int',
+        'critical' => 'int',
+        'total' => 'int'
     ];
 
     /**
@@ -78,15 +75,12 @@ class Check implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'uuid' => null,
-        'check_type' => null,
-        'last_update' => null,
-        'active' => null,
-        'status' => null,
-        'stats' => null,
-        'check_type' => null,
-        'last_update' => null
+        'date' => null,
+        'unknown' => null,
+        'ok' => null,
+        'warning' => null,
+        'critical' => null,
+        'total' => null
     ];
 
     /**
@@ -116,15 +110,12 @@ class Check implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'uuid' => 'uuid',
-        'check_type' => 'check_type',
-        'last_update' => 'last_update',
-        'active' => 'active',
-        'status' => 'status',
-        'stats' => 'stats',
-        'check_type' => 'checkType',
-        'last_update' => 'lastUpdate'
+        'date' => 'date',
+        'unknown' => 'unknown',
+        'ok' => 'ok',
+        'warning' => 'warning',
+        'critical' => 'critical',
+        'total' => 'total'
     ];
 
     /**
@@ -133,15 +124,12 @@ class Check implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'uuid' => 'setUuid',
-        'check_type' => 'setCheckType',
-        'last_update' => 'setLastUpdate',
-        'active' => 'setActive',
-        'status' => 'setStatus',
-        'stats' => 'setStats',
-        'check_type' => 'setCheckType',
-        'last_update' => 'setLastUpdate'
+        'date' => 'setDate',
+        'unknown' => 'setUnknown',
+        'ok' => 'setOk',
+        'warning' => 'setWarning',
+        'critical' => 'setCritical',
+        'total' => 'setTotal'
     ];
 
     /**
@@ -150,15 +138,12 @@ class Check implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'uuid' => 'getUuid',
-        'check_type' => 'getCheckType',
-        'last_update' => 'getLastUpdate',
-        'active' => 'getActive',
-        'status' => 'getStatus',
-        'stats' => 'getStats',
-        'check_type' => 'getCheckType',
-        'last_update' => 'getLastUpdate'
+        'date' => 'getDate',
+        'unknown' => 'getUnknown',
+        'ok' => 'getOk',
+        'warning' => 'getWarning',
+        'critical' => 'getCritical',
+        'total' => 'getTotal'
     ];
 
     /**
@@ -218,15 +203,12 @@ class Check implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['uuid'] = $data['uuid'] ?? null;
-        $this->container['check_type'] = $data['check_type'] ?? null;
-        $this->container['last_update'] = $data['last_update'] ?? null;
-        $this->container['active'] = $data['active'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['stats'] = $data['stats'] ?? null;
-        $this->container['check_type'] = $data['check_type'] ?? null;
-        $this->container['last_update'] = $data['last_update'] ?? null;
+        $this->container['date'] = $data['date'] ?? null;
+        $this->container['unknown'] = $data['unknown'] ?? null;
+        $this->container['ok'] = $data['ok'] ?? null;
+        $this->container['warning'] = $data['warning'] ?? null;
+        $this->container['critical'] = $data['critical'] ?? null;
+        $this->container['total'] = $data['total'] ?? null;
     }
 
     /**
@@ -254,217 +236,145 @@ class Check implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
+     * Gets date
      *
      * @return string|null
      */
-    public function getName()
+    public function getDate()
     {
-        return $this->container['name'];
+        return $this->container['date'];
     }
 
     /**
-     * Sets name
+     * Sets date
      *
-     * @param string|null $name name
+     * @param string|null $date date
      *
      * @return self
      */
-    public function setName($name)
+    public function setDate($date)
     {
-        $this->container['name'] = $name;
+        $this->container['date'] = $date;
 
         return $this;
     }
 
     /**
-     * Gets uuid
-     *
-     * @return string|null
-     */
-    public function getUuid()
-    {
-        return $this->container['uuid'];
-    }
-
-    /**
-     * Sets uuid
-     *
-     * @param string|null $uuid uuid
-     *
-     * @return self
-     */
-    public function setUuid($uuid)
-    {
-        $this->container['uuid'] = $uuid;
-
-        return $this;
-    }
-
-    /**
-     * Gets check_type
-     *
-     * @return string|null
-     */
-    public function getCheckType()
-    {
-        return $this->container['check_type'];
-    }
-
-    /**
-     * Sets check_type
-     *
-     * @param string|null $check_type check_type
-     *
-     * @return self
-     */
-    public function setCheckType($check_type)
-    {
-        $this->container['check_type'] = $check_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_update
-     *
-     * @return string|null
-     */
-    public function getLastUpdate()
-    {
-        return $this->container['last_update'];
-    }
-
-    /**
-     * Sets last_update
-     *
-     * @param string|null $last_update last_update
-     *
-     * @return self
-     */
-    public function setLastUpdate($last_update)
-    {
-        $this->container['last_update'] = $last_update;
-
-        return $this;
-    }
-
-    /**
-     * Gets active
-     *
-     * @return bool|null
-     */
-    public function getActive()
-    {
-        return $this->container['active'];
-    }
-
-    /**
-     * Sets active
-     *
-     * @param bool|null $active active
-     *
-     * @return self
-     */
-    public function setActive($active)
-    {
-        $this->container['active'] = $active;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
+     * Gets unknown
      *
      * @return int|null
      */
-    public function getStatus()
+    public function getUnknown()
     {
-        return $this->container['status'];
+        return $this->container['unknown'];
     }
 
     /**
-     * Sets status
+     * Sets unknown
      *
-     * @param int|null $status status
+     * @param int|null $unknown unknown
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setUnknown($unknown)
     {
-        $this->container['status'] = $status;
+        $this->container['unknown'] = $unknown;
 
         return $this;
     }
 
     /**
-     * Gets stats
+     * Gets ok
      *
-     * @return \LivewatchApi\Model\CheckStats[]|null
+     * @return int|null
      */
-    public function getStats()
+    public function getOk()
     {
-        return $this->container['stats'];
+        return $this->container['ok'];
     }
 
     /**
-     * Sets stats
+     * Sets ok
      *
-     * @param \LivewatchApi\Model\CheckStats[]|null $stats stats
+     * @param int|null $ok ok
      *
      * @return self
      */
-    public function setStats($stats)
+    public function setOk($ok)
     {
-        $this->container['stats'] = $stats;
+        $this->container['ok'] = $ok;
 
         return $this;
     }
 
     /**
-     * Gets check_type
+     * Gets warning
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getCheckType()
+    public function getWarning()
     {
-        return $this->container['check_type'];
+        return $this->container['warning'];
     }
 
     /**
-     * Sets check_type
+     * Sets warning
      *
-     * @param string|null $check_type check_type
+     * @param int|null $warning warning
      *
      * @return self
      */
-    public function setCheckType($check_type)
+    public function setWarning($warning)
     {
-        $this->container['check_type'] = $check_type;
+        $this->container['warning'] = $warning;
 
         return $this;
     }
 
     /**
-     * Gets last_update
+     * Gets critical
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getLastUpdate()
+    public function getCritical()
     {
-        return $this->container['last_update'];
+        return $this->container['critical'];
     }
 
     /**
-     * Sets last_update
+     * Sets critical
      *
-     * @param string|null $last_update last_update
+     * @param int|null $critical critical
      *
      * @return self
      */
-    public function setLastUpdate($last_update)
+    public function setCritical($critical)
     {
-        $this->container['last_update'] = $last_update;
+        $this->container['critical'] = $critical;
+
+        return $this;
+    }
+
+    /**
+     * Gets total
+     *
+     * @return int|null
+     */
+    public function getTotal()
+    {
+        return $this->container['total'];
+    }
+
+    /**
+     * Sets total
+     *
+     * @param int|null $total total
+     *
+     * @return self
+     */
+    public function setTotal($total)
+    {
+        $this->container['total'] = $total;
 
         return $this;
     }

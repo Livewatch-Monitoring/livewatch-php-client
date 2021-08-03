@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**checkDetails()**](CheckApi.md#checkDetails) | **GET** /api/check/details/{uuid} | Get details of one check
 [**checkList()**](CheckApi.md#checkList) | **GET** /api/check/list/{page} | List all your checks configured
-[**checkReport()**](CheckApi.md#checkReport) | **GET** /api/check/report/{uuid} | Get details of one check
+[**checkReport()**](CheckApi.md#checkReport) | **GET** /api/check/report/{uuid} | Get report of one check
 [**setCheckState()**](CheckApi.md#setCheckState) | **POST** /api/check/enable/{uuid}/{state} | Enable or disable a check
 
 
@@ -137,12 +137,12 @@ Name | Type | Description  | Notes
 ## `checkReport()`
 
 ```php
-checkReport($uuid): \LivewatchApi\Model\Check
+checkReport($uuid): \LivewatchApi\Model\CheckStats[]
 ```
 
-Get details of one check
+Get report of one check
 
-Retrieve information about one check
+Retrieve reporting information about one check
 
 ### Example
 
@@ -181,7 +181,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\LivewatchApi\Model\Check**](../Model/Check.md)
+[**\LivewatchApi\Model\CheckStats[]**](../Model/CheckStats.md)
 
 ### Authorization
 

@@ -90,7 +90,7 @@ Class | Method | HTTP request | Description
 *AccountApi* | [**accountDetails**](docs/Api/AccountApi.md#accountdetails) | **GET** /api/account | Get Account details
 *CheckApi* | [**checkDetails**](docs/Api/CheckApi.md#checkdetails) | **GET** /api/check/details/{uuid} | Get details of one check
 *CheckApi* | [**checkList**](docs/Api/CheckApi.md#checklist) | **GET** /api/check/list/{page} | List all your checks configured
-*CheckApi* | [**checkReport**](docs/Api/CheckApi.md#checkreport) | **GET** /api/check/report/{uuid} | Get details of one check
+*CheckApi* | [**checkReport**](docs/Api/CheckApi.md#checkreport) | **GET** /api/check/report/{uuid} | Get report of one check
 *CheckApi* | [**setCheckState**](docs/Api/CheckApi.md#setcheckstate) | **POST** /api/check/enable/{uuid}/{state} | Enable or disable a check
 *GeneralApi* | [**listMonitoringIPs**](docs/Api/GeneralApi.md#listmonitoringips) | **GET** /api/general/listMonitoringIPs | List all our IPs with details
 *UserApi* | [**apiTokenDetails**](docs/Api/UserApi.md#apitokendetails) | **POST** /api/user/token | Get your API-Token
@@ -100,7 +100,7 @@ Class | Method | HTTP request | Description
 - [Account](docs/Model/Account.md)
 - [ApiToken](docs/Model/ApiToken.md)
 - [Check](docs/Model/Check.md)
-- [CheckReport](docs/Model/CheckReport.md)
+- [CheckStats](docs/Model/CheckStats.md)
 - [MonitoringIp](docs/Model/MonitoringIp.md)
 
 ## Authorization

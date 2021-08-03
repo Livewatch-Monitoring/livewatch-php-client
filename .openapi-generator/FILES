@@ -10,7 +10,7 @@ docs/Api/UserApi.md
 docs/Model/Account.md
 docs/Model/ApiToken.md
 docs/Model/Check.md
-docs/Model/CheckReport.md
+docs/Model/CheckStats.md
 docs/Model/MonitoringIp.md
 git_push.sh
 lib/Api/AccountApi.php
@@ -23,8 +23,9 @@ lib/HeaderSelector.php
 lib/Model/Account.php
 lib/Model/ApiToken.php
 lib/Model/Check.php
-lib/Model/CheckReport.php
+lib/Model/CheckStats.php
 lib/Model/ModelInterface.php
 lib/Model/MonitoringIp.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CheckStatsTest.php

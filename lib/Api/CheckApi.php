@@ -655,13 +655,13 @@ class CheckApi
     /**
      * Operation checkReport
      *
-     * Get details of one check
+     * Get report of one check
      *
      * @param  string $uuid uuid (required)
      *
      * @throws \LivewatchApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \LivewatchApi\Model\Check
+     * @return \LivewatchApi\Model\CheckStats[]
      */
     public function checkReport($uuid)
     {
@@ -672,13 +672,13 @@ class CheckApi
     /**
      * Operation checkReportWithHttpInfo
      *
-     * Get details of one check
+     * Get report of one check
      *
      * @param  string $uuid (required)
      *
      * @throws \LivewatchApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \LivewatchApi\Model\Check, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LivewatchApi\Model\CheckStats[], HTTP status code, HTTP response headers (array of strings)
      */
     public function checkReportWithHttpInfo($uuid)
     {
@@ -714,20 +714,20 @@ class CheckApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\LivewatchApi\Model\Check' === '\SplFileObject') {
+                    if ('\LivewatchApi\Model\CheckStats[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\LivewatchApi\Model\Check', []),
+                        ObjectSerializer::deserialize($content, '\LivewatchApi\Model\CheckStats[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\LivewatchApi\Model\Check';
+            $returnType = '\LivewatchApi\Model\CheckStats[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -745,7 +745,7 @@ class CheckApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\LivewatchApi\Model\Check',
+                        '\LivewatchApi\Model\CheckStats[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -758,7 +758,7 @@ class CheckApi
     /**
      * Operation checkReportAsync
      *
-     * Get details of one check
+     * Get report of one check
      *
      * @param  string $uuid (required)
      *
@@ -778,7 +778,7 @@ class CheckApi
     /**
      * Operation checkReportAsyncWithHttpInfo
      *
-     * Get details of one check
+     * Get report of one check
      *
      * @param  string $uuid (required)
      *
@@ -787,7 +787,7 @@ class CheckApi
      */
     public function checkReportAsyncWithHttpInfo($uuid)
     {
-        $returnType = '\LivewatchApi\Model\Check';
+        $returnType = '\LivewatchApi\Model\CheckStats[]';
         $request = $this->checkReportRequest($uuid);
 
         return $this->client
