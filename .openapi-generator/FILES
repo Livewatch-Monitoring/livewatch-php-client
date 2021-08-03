@@ -28,4 +28,3 @@ lib/Model/ModelInterface.php
 lib/Model/MonitoringIp.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CheckStatsTest.php

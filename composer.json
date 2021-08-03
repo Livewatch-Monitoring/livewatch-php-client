@@ -1,6 +1,6 @@
 {
     "name": "livewatch-monitoring/livewatch-php-client",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "Livewatch Server Monitoring API",
     "keywords": [
         "livewatch",
