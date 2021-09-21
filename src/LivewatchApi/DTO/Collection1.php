@@ -1,0 +1,16 @@
+<?php
+declare(strict_types=1);
+
+namespace LivewatchApi\DTO;
+
+use Articus\DataTransfer\Annotation as DTA;
+
+/**
+ * @DTA\Strategy(name="ObjectList", options={"type":\LivewatchApi\DTO\Check::class})
+ * @DTA\Validator(name="Collection", options={"validators":{
+ *     {"name":"TypeCompliant", "options":{"type":\LivewatchApi\DTO\Check::class}}
+ * }})
+ */
+class Collection1 extends \ArrayObject
+{
+}
