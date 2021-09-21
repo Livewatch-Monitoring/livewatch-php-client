@@ -91,6 +91,7 @@ Class | Method | HTTP request | Description
 *CheckApi* | [**checkDetails**](docs/Api/CheckApi.md#checkdetails) | **GET** /api/check/details/{uuid} | Get details of one check
 *CheckApi* | [**checkList**](docs/Api/CheckApi.md#checklist) | **GET** /api/check/list/{page} | List all your checks configured
 *CheckApi* | [**checkReport**](docs/Api/CheckApi.md#checkreport) | **GET** /api/check/report/{uuid} | Get report of one check
+*CheckApi* | [**checksByTag**](docs/Api/CheckApi.md#checksbytag) | **POST** /api/check/checks/tag | Get report of one check
 *CheckApi* | [**setCheckState**](docs/Api/CheckApi.md#setcheckstate) | **POST** /api/check/enable/{uuid}/{state} | Enable or disable a check
 *GeneralApi* | [**listMonitoringIPs**](docs/Api/GeneralApi.md#listmonitoringips) | **GET** /api/general/listMonitoringIPs | List all our IPs with details
 *UserApi* | [**apiTokenDetails**](docs/Api/UserApi.md#apitokendetails) | **POST** /api/user/token | Get your API-Token

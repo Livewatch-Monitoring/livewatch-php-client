@@ -922,6 +922,294 @@ class CheckApi
     }
 
     /**
+     * Operation checksByTag
+     *
+     * Get report of one check
+     *
+     * @param  string $tags Comma seperated tags to search for (required)
+     * @param  Int $stat_days History range in days (optional)
+     *
+     * @throws \LivewatchApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \LivewatchApi\Model\Check[]
+     */
+    public function checksByTag($tags, $stat_days = null)
+    {
+        list($response) = $this->checksByTagWithHttpInfo($tags, $stat_days);
+        return $response;
+    }
+
+    /**
+     * Operation checksByTagWithHttpInfo
+     *
+     * Get report of one check
+     *
+     * @param  string $tags Comma seperated tags to search for (required)
+     * @param  Int $stat_days History range in days (optional)
+     *
+     * @throws \LivewatchApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \LivewatchApi\Model\Check[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function checksByTagWithHttpInfo($tags, $stat_days = null)
+    {
+        $request = $this->checksByTagRequest($tags, $stat_days);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\LivewatchApi\Model\Check[]' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LivewatchApi\Model\Check[]', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\LivewatchApi\Model\Check[]';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LivewatchApi\Model\Check[]',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation checksByTagAsync
+     *
+     * Get report of one check
+     *
+     * @param  string $tags Comma seperated tags to search for (required)
+     * @param  Int $stat_days History range in days (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function checksByTagAsync($tags, $stat_days = null)
+    {
+        return $this->checksByTagAsyncWithHttpInfo($tags, $stat_days)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation checksByTagAsyncWithHttpInfo
+     *
+     * Get report of one check
+     *
+     * @param  string $tags Comma seperated tags to search for (required)
+     * @param  Int $stat_days History range in days (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function checksByTagAsyncWithHttpInfo($tags, $stat_days = null)
+    {
+        $returnType = '\LivewatchApi\Model\Check[]';
+        $request = $this->checksByTagRequest($tags, $stat_days);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'checksByTag'
+     *
+     * @param  string $tags Comma seperated tags to search for (required)
+     * @param  Int $stat_days History range in days (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function checksByTagRequest($tags, $stat_days = null)
+    {
+        // verify the required parameter 'tags' is set
+        if ($tags === null || (is_array($tags) && count($tags) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tags when calling checksByTag'
+            );
+        }
+
+        $resourcePath = '/api/check/checks/tag';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($tags !== null) {
+            if('form' === 'form' && is_array($tags)) {
+                foreach($tags as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['tags'] = $tags;
+            }
+        }
+        // query params
+        if ($stat_days !== null) {
+            if('form' === 'form' && is_array($stat_days)) {
+                foreach($stat_days as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['stat_days'] = $stat_days;
+            }
+        }
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('auth-livewatch-token');
+        if ($apiKey !== null) {
+            $headers['auth-livewatch-token'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation setCheckState
      *
      * Enable or disable a check
