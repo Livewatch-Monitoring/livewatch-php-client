@@ -62,7 +62,8 @@ class CheckHistory implements ModelInterface, ArrayAccess, \JsonSerializable
         'uuid' => 'string',
         'check_type' => 'string',
         'performed_at' => 'string',
-        'status' => 'int'
+        'status' => 'int',
+        'value' => 'string'
     ];
 
     /**
@@ -76,7 +77,8 @@ class CheckHistory implements ModelInterface, ArrayAccess, \JsonSerializable
         'uuid' => null,
         'check_type' => null,
         'performed_at' => null,
-        'status' => null
+        'status' => null,
+        'value' => null
     ];
 
     /**
@@ -109,7 +111,8 @@ class CheckHistory implements ModelInterface, ArrayAccess, \JsonSerializable
         'uuid' => 'uuid',
         'check_type' => 'checkType',
         'performed_at' => 'performedAt',
-        'status' => 'status'
+        'status' => 'status',
+        'value' => 'value'
     ];
 
     /**
@@ -121,7 +124,8 @@ class CheckHistory implements ModelInterface, ArrayAccess, \JsonSerializable
         'uuid' => 'setUuid',
         'check_type' => 'setCheckType',
         'performed_at' => 'setPerformedAt',
-        'status' => 'setStatus'
+        'status' => 'setStatus',
+        'value' => 'setValue'
     ];
 
     /**
@@ -133,7 +137,8 @@ class CheckHistory implements ModelInterface, ArrayAccess, \JsonSerializable
         'uuid' => 'getUuid',
         'check_type' => 'getCheckType',
         'performed_at' => 'getPerformedAt',
-        'status' => 'getStatus'
+        'status' => 'getStatus',
+        'value' => 'getValue'
     ];
 
     /**
@@ -197,6 +202,7 @@ class CheckHistory implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['check_type'] = $data['check_type'] ?? null;
         $this->container['performed_at'] = $data['performed_at'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
     }
 
     /**
@@ -315,6 +321,30 @@ class CheckHistory implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStatus($status)
     {
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets value
+     *
+     * @return string|null
+     */
+    public function getValue()
+    {
+        return $this->container['value'];
+    }
+
+    /**
+     * Sets value
+     *
+     * @param string|null $value value
+     *
+     * @return self
+     */
+    public function setValue($value)
+    {
+        $this->container['value'] = $value;
 
         return $this;
     }

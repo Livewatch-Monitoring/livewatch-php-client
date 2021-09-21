@@ -32,5 +32,3 @@ lib/Model/ModelInterface.php
 lib/Model/MonitoringIp.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CheckEventTest.php
-test/Model/CheckHistoryTest.php
