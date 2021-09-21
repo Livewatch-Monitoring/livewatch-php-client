@@ -89,6 +89,8 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccountApi* | [**accountDetails**](docs/Api/AccountApi.md#accountdetails) | **GET** /api/account | Get Account details
 *CheckApi* | [**checkDetails**](docs/Api/CheckApi.md#checkdetails) | **GET** /api/check/details/{uuid} | Get details of one check
+*CheckApi* | [**checkEventsByDate**](docs/Api/CheckApi.md#checkeventsbydate) | **POST** /api/check/check/events/{uuid} | Get events of one check by date
+*CheckApi* | [**checkHistory**](docs/Api/CheckApi.md#checkhistory) | **GET** /api/check/latest/{uuid} | Get history of one check
 *CheckApi* | [**checkList**](docs/Api/CheckApi.md#checklist) | **GET** /api/check/list/{page} | List all your checks configured
 *CheckApi* | [**checkReport**](docs/Api/CheckApi.md#checkreport) | **GET** /api/check/report/{uuid} | Get report of one check
 *CheckApi* | [**checksByTag**](docs/Api/CheckApi.md#checksbytag) | **POST** /api/check/checks/tag | Get report of one check
@@ -101,6 +103,8 @@ Class | Method | HTTP request | Description
 - [Account](docs/Model/Account.md)
 - [ApiToken](docs/Model/ApiToken.md)
 - [Check](docs/Model/Check.md)
+- [CheckEvent](docs/Model/CheckEvent.md)
+- [CheckHistory](docs/Model/CheckHistory.md)
 - [CheckStats](docs/Model/CheckStats.md)
 - [MonitoringIp](docs/Model/MonitoringIp.md)
 
@@ -123,5 +127,5 @@ vendor/bin/phpunit
 ```
 
 - API version: `1.0.0`
-    - Package version: `1.1.0`
+    - Package version: `1.1.1`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`
