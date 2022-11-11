@@ -1,6 +1,6 @@
 <?php
 /**
- * CheckStats
+ * CheckNotification
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \LivewatchApi\ObjectSerializer;
 
 /**
- * CheckStats Class Doc Comment
+ * CheckNotification Class Doc Comment
  *
  * @category Class
  * @package  LivewatchApi
@@ -42,7 +42,7 @@ use \LivewatchApi\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class CheckStats implements ModelInterface, ArrayAccess, \JsonSerializable
+class CheckNotification implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class CheckStats implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CheckStats';
+    protected static $openAPIModelName = 'CheckNotification';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,12 +59,15 @@ class CheckStats implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'uuid' => 'string',
+        'type' => 'string',
+        'notification' => 'string',
+        'contact_name' => 'string',
+        'check_name' => 'string',
         'date' => 'string',
-        'unknown' => 'int',
-        'ok' => 'int',
-        'warning' => 'int',
-        'critical' => 'int',
-        'total' => 'int'
+        'state' => 'int',
+        'contact_name' => 'string',
+        'check_name' => 'string'
     ];
 
     /**
@@ -75,12 +78,15 @@ class CheckStats implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'uuid' => null,
+        'type' => null,
+        'notification' => null,
+        'contact_name' => null,
+        'check_name' => null,
         'date' => null,
-        'unknown' => null,
-        'ok' => null,
-        'warning' => null,
-        'critical' => null,
-        'total' => null
+        'state' => null,
+        'contact_name' => null,
+        'check_name' => null
     ];
 
     /**
@@ -110,12 +116,15 @@ class CheckStats implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'uuid' => 'uuid',
+        'type' => 'type',
+        'notification' => 'notification',
+        'contact_name' => 'contact_name',
+        'check_name' => 'check_name',
         'date' => 'date',
-        'unknown' => 'unknown',
-        'ok' => 'ok',
-        'warning' => 'warning',
-        'critical' => 'critical',
-        'total' => 'total'
+        'state' => 'state',
+        'contact_name' => 'contactName',
+        'check_name' => 'checkName'
     ];
 
     /**
@@ -124,12 +133,15 @@ class CheckStats implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'uuid' => 'setUuid',
+        'type' => 'setType',
+        'notification' => 'setNotification',
+        'contact_name' => 'setContactName',
+        'check_name' => 'setCheckName',
         'date' => 'setDate',
-        'unknown' => 'setUnknown',
-        'ok' => 'setOk',
-        'warning' => 'setWarning',
-        'critical' => 'setCritical',
-        'total' => 'setTotal'
+        'state' => 'setState',
+        'contact_name' => 'setContactName',
+        'check_name' => 'setCheckName'
     ];
 
     /**
@@ -138,12 +150,15 @@ class CheckStats implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'uuid' => 'getUuid',
+        'type' => 'getType',
+        'notification' => 'getNotification',
+        'contact_name' => 'getContactName',
+        'check_name' => 'getCheckName',
         'date' => 'getDate',
-        'unknown' => 'getUnknown',
-        'ok' => 'getOk',
-        'warning' => 'getWarning',
-        'critical' => 'getCritical',
-        'total' => 'getTotal'
+        'state' => 'getState',
+        'contact_name' => 'getContactName',
+        'check_name' => 'getCheckName'
     ];
 
     /**
@@ -203,12 +218,15 @@ class CheckStats implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['uuid'] = $data['uuid'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
+        $this->container['notification'] = $data['notification'] ?? null;
+        $this->container['contact_name'] = $data['contact_name'] ?? null;
+        $this->container['check_name'] = $data['check_name'] ?? null;
         $this->container['date'] = $data['date'] ?? null;
-        $this->container['unknown'] = $data['unknown'] ?? null;
-        $this->container['ok'] = $data['ok'] ?? null;
-        $this->container['warning'] = $data['warning'] ?? null;
-        $this->container['critical'] = $data['critical'] ?? null;
-        $this->container['total'] = $data['total'] ?? null;
+        $this->container['state'] = $data['state'] ?? null;
+        $this->container['contact_name'] = $data['contact_name'] ?? null;
+        $this->container['check_name'] = $data['check_name'] ?? null;
     }
 
     /**
@@ -236,6 +254,126 @@ class CheckStats implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
+     * Gets uuid
+     *
+     * @return string|null
+     */
+    public function getUuid()
+    {
+        return $this->container['uuid'];
+    }
+
+    /**
+     * Sets uuid
+     *
+     * @param string|null $uuid uuid
+     *
+     * @return self
+     */
+    public function setUuid($uuid)
+    {
+        $this->container['uuid'] = $uuid;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets notification
+     *
+     * @return string|null
+     */
+    public function getNotification()
+    {
+        return $this->container['notification'];
+    }
+
+    /**
+     * Sets notification
+     *
+     * @param string|null $notification notification
+     *
+     * @return self
+     */
+    public function setNotification($notification)
+    {
+        $this->container['notification'] = $notification;
+
+        return $this;
+    }
+
+    /**
+     * Gets contact_name
+     *
+     * @return string|null
+     */
+    public function getContactName()
+    {
+        return $this->container['contact_name'];
+    }
+
+    /**
+     * Sets contact_name
+     *
+     * @param string|null $contact_name contact_name
+     *
+     * @return self
+     */
+    public function setContactName($contact_name)
+    {
+        $this->container['contact_name'] = $contact_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets check_name
+     *
+     * @return string|null
+     */
+    public function getCheckName()
+    {
+        return $this->container['check_name'];
+    }
+
+    /**
+     * Sets check_name
+     *
+     * @param string|null $check_name check_name
+     *
+     * @return self
+     */
+    public function setCheckName($check_name)
+    {
+        $this->container['check_name'] = $check_name;
+
+        return $this;
+    }
+
+    /**
      * Gets date
      *
      * @return string|null
@@ -260,121 +398,73 @@ class CheckStats implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets unknown
+     * Gets state
      *
      * @return int|null
      */
-    public function getUnknown()
+    public function getState()
     {
-        return $this->container['unknown'];
+        return $this->container['state'];
     }
 
     /**
-     * Sets unknown
+     * Sets state
      *
-     * @param int|null $unknown unknown
+     * @param int|null $state state
      *
      * @return self
      */
-    public function setUnknown($unknown)
+    public function setState($state)
     {
-        $this->container['unknown'] = $unknown;
+        $this->container['state'] = $state;
 
         return $this;
     }
 
     /**
-     * Gets ok
+     * Gets contact_name
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getOk()
+    public function getContactName()
     {
-        return $this->container['ok'];
+        return $this->container['contact_name'];
     }
 
     /**
-     * Sets ok
+     * Sets contact_name
      *
-     * @param int|null $ok ok
+     * @param string|null $contact_name contact_name
      *
      * @return self
      */
-    public function setOk($ok)
+    public function setContactName($contact_name)
     {
-        $this->container['ok'] = $ok;
+        $this->container['contact_name'] = $contact_name;
 
         return $this;
     }
 
     /**
-     * Gets warning
+     * Gets check_name
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getWarning()
+    public function getCheckName()
     {
-        return $this->container['warning'];
+        return $this->container['check_name'];
     }
 
     /**
-     * Sets warning
+     * Sets check_name
      *
-     * @param int|null $warning warning
+     * @param string|null $check_name check_name
      *
      * @return self
      */
-    public function setWarning($warning)
+    public function setCheckName($check_name)
     {
-        $this->container['warning'] = $warning;
-
-        return $this;
-    }
-
-    /**
-     * Gets critical
-     *
-     * @return int|null
-     */
-    public function getCritical()
-    {
-        return $this->container['critical'];
-    }
-
-    /**
-     * Sets critical
-     *
-     * @param int|null $critical critical
-     *
-     * @return self
-     */
-    public function setCritical($critical)
-    {
-        $this->container['critical'] = $critical;
-
-        return $this;
-    }
-
-    /**
-     * Gets total
-     *
-     * @return int|null
-     */
-    public function getTotal()
-    {
-        return $this->container['total'];
-    }
-
-    /**
-     * Sets total
-     *
-     * @param int|null $total total
-     *
-     * @return self
-     */
-    public function setTotal($total)
-    {
-        $this->container['total'] = $total;
+        $this->container['check_name'] = $check_name;
 
         return $this;
     }

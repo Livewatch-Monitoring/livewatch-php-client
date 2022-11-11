@@ -1,5 +1,5 @@
 .gitignore
-.php_cs
+.php-cs-fixer.dist.php
 .travis.yml
 README.md
 composer.json
@@ -12,7 +12,9 @@ docs/Model/ApiToken.md
 docs/Model/Check.md
 docs/Model/CheckEvent.md
 docs/Model/CheckHistory.md
+docs/Model/CheckNotification.md
 docs/Model/CheckStats.md
+docs/Model/Contact.md
 docs/Model/MonitoringIp.md
 git_push.sh
 lib/Api/AccountApi.php
@@ -27,8 +29,12 @@ lib/Model/ApiToken.php
 lib/Model/Check.php
 lib/Model/CheckEvent.php
 lib/Model/CheckHistory.php
+lib/Model/CheckNotification.php
 lib/Model/CheckStats.php
+lib/Model/Contact.php
 lib/Model/ModelInterface.php
 lib/Model/MonitoringIp.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CheckNotificationTest.php
+test/Model/ContactTest.php

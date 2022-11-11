@@ -1,6 +1,6 @@
 <?php
 /**
- * CheckStats
+ * Contact
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \LivewatchApi\ObjectSerializer;
 
 /**
- * CheckStats Class Doc Comment
+ * Contact Class Doc Comment
  *
  * @category Class
  * @package  LivewatchApi
@@ -42,7 +42,7 @@ use \LivewatchApi\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class CheckStats implements ModelInterface, ArrayAccess, \JsonSerializable
+class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class CheckStats implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CheckStats';
+    protected static $openAPIModelName = 'Contact';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,12 +59,8 @@ class CheckStats implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'date' => 'string',
-        'unknown' => 'int',
-        'ok' => 'int',
-        'warning' => 'int',
-        'critical' => 'int',
-        'total' => 'int'
+        'type' => 'string',
+        'name' => 'string'
     ];
 
     /**
@@ -75,12 +71,8 @@ class CheckStats implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'date' => null,
-        'unknown' => null,
-        'ok' => null,
-        'warning' => null,
-        'critical' => null,
-        'total' => null
+        'type' => null,
+        'name' => null
     ];
 
     /**
@@ -110,12 +102,8 @@ class CheckStats implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'date' => 'date',
-        'unknown' => 'unknown',
-        'ok' => 'ok',
-        'warning' => 'warning',
-        'critical' => 'critical',
-        'total' => 'total'
+        'type' => 'type',
+        'name' => 'name'
     ];
 
     /**
@@ -124,12 +112,8 @@ class CheckStats implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'date' => 'setDate',
-        'unknown' => 'setUnknown',
-        'ok' => 'setOk',
-        'warning' => 'setWarning',
-        'critical' => 'setCritical',
-        'total' => 'setTotal'
+        'type' => 'setType',
+        'name' => 'setName'
     ];
 
     /**
@@ -138,12 +122,8 @@ class CheckStats implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'date' => 'getDate',
-        'unknown' => 'getUnknown',
-        'ok' => 'getOk',
-        'warning' => 'getWarning',
-        'critical' => 'getCritical',
-        'total' => 'getTotal'
+        'type' => 'getType',
+        'name' => 'getName'
     ];
 
     /**
@@ -203,12 +183,8 @@ class CheckStats implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['date'] = $data['date'] ?? null;
-        $this->container['unknown'] = $data['unknown'] ?? null;
-        $this->container['ok'] = $data['ok'] ?? null;
-        $this->container['warning'] = $data['warning'] ?? null;
-        $this->container['critical'] = $data['critical'] ?? null;
-        $this->container['total'] = $data['total'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
     }
 
     /**
@@ -236,145 +212,49 @@ class CheckStats implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets date
+     * Gets type
      *
      * @return string|null
      */
-    public function getDate()
+    public function getType()
     {
-        return $this->container['date'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets date
+     * Sets type
      *
-     * @param string|null $date date
+     * @param string|null $type type
      *
      * @return self
      */
-    public function setDate($date)
+    public function setType($type)
     {
-        $this->container['date'] = $date;
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets unknown
+     * Gets name
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getUnknown()
+    public function getName()
     {
-        return $this->container['unknown'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets unknown
+     * Sets name
      *
-     * @param int|null $unknown unknown
+     * @param string|null $name name
      *
      * @return self
      */
-    public function setUnknown($unknown)
+    public function setName($name)
     {
-        $this->container['unknown'] = $unknown;
-
-        return $this;
-    }
-
-    /**
-     * Gets ok
-     *
-     * @return int|null
-     */
-    public function getOk()
-    {
-        return $this->container['ok'];
-    }
-
-    /**
-     * Sets ok
-     *
-     * @param int|null $ok ok
-     *
-     * @return self
-     */
-    public function setOk($ok)
-    {
-        $this->container['ok'] = $ok;
-
-        return $this;
-    }
-
-    /**
-     * Gets warning
-     *
-     * @return int|null
-     */
-    public function getWarning()
-    {
-        return $this->container['warning'];
-    }
-
-    /**
-     * Sets warning
-     *
-     * @param int|null $warning warning
-     *
-     * @return self
-     */
-    public function setWarning($warning)
-    {
-        $this->container['warning'] = $warning;
-
-        return $this;
-    }
-
-    /**
-     * Gets critical
-     *
-     * @return int|null
-     */
-    public function getCritical()
-    {
-        return $this->container['critical'];
-    }
-
-    /**
-     * Sets critical
-     *
-     * @param int|null $critical critical
-     *
-     * @return self
-     */
-    public function setCritical($critical)
-    {
-        $this->container['critical'] = $critical;
-
-        return $this;
-    }
-
-    /**
-     * Gets total
-     *
-     * @return int|null
-     */
-    public function getTotal()
-    {
-        return $this->container['total'];
-    }
-
-    /**
-     * Sets total
-     *
-     * @param int|null $total total
-     *
-     * @return self
-     */
-    public function setTotal($total)
-    {
-        $this->container['total'] = $total;
+        $this->container['name'] = $name;
 
         return $this;
     }

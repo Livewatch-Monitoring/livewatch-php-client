@@ -88,12 +88,14 @@ All URIs are relative to *https://www.livewatch.de*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccountApi* | [**accountDetails**](docs/Api/AccountApi.md#accountdetails) | **GET** /api/account | Get Account details
+*CheckApi* | [**allCheckNotifications**](docs/Api/CheckApi.md#allchecknotifications) | **GET** /api/check/notifications | Get notifications of all checks
 *CheckApi* | [**checkDetails**](docs/Api/CheckApi.md#checkdetails) | **GET** /api/check/details/{uuid} | Get details of one check
 *CheckApi* | [**checkEventsByDate**](docs/Api/CheckApi.md#checkeventsbydate) | **POST** /api/check/check/events/{uuid} | Get events of one check by date
 *CheckApi* | [**checkHistory**](docs/Api/CheckApi.md#checkhistory) | **GET** /api/check/latest/{uuid} | Get history of one check
 *CheckApi* | [**checkList**](docs/Api/CheckApi.md#checklist) | **GET** /api/check/list/{page} | List all your checks configured
+*CheckApi* | [**checkNotifications**](docs/Api/CheckApi.md#checknotifications) | **GET** /api/check/notifications/{uuid} | Get notifications of one check
 *CheckApi* | [**checkReport**](docs/Api/CheckApi.md#checkreport) | **GET** /api/check/report/{uuid} | Get report of one check
-*CheckApi* | [**checksByTag**](docs/Api/CheckApi.md#checksbytag) | **POST** /api/check/checks/tag | Get report of one check
+*CheckApi* | [**checksByTag**](docs/Api/CheckApi.md#checksbytag) | **POST** /api/check/checks/tag | Get report of checks by Tag
 *CheckApi* | [**setCheckState**](docs/Api/CheckApi.md#setcheckstate) | **POST** /api/check/enable/{uuid}/{state} | Enable or disable a check
 *GeneralApi* | [**listMonitoringIPs**](docs/Api/GeneralApi.md#listmonitoringips) | **GET** /api/general/listMonitoringIPs | List all our IPs with details
 *UserApi* | [**apiTokenDetails**](docs/Api/UserApi.md#apitokendetails) | **POST** /api/user/token | Get your API-Token
@@ -105,7 +107,9 @@ Class | Method | HTTP request | Description
 - [Check](docs/Model/Check.md)
 - [CheckEvent](docs/Model/CheckEvent.md)
 - [CheckHistory](docs/Model/CheckHistory.md)
+- [CheckNotification](docs/Model/CheckNotification.md)
 - [CheckStats](docs/Model/CheckStats.md)
+- [Contact](docs/Model/Contact.md)
 - [MonitoringIp](docs/Model/MonitoringIp.md)
 
 ## Authorization
