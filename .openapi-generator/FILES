@@ -36,5 +36,3 @@ lib/Model/ModelInterface.php
 lib/Model/MonitoringIp.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CheckNotificationTest.php
-test/Model/ContactTest.php
