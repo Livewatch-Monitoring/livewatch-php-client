@@ -117,7 +117,7 @@ class UserApi
     /**
      * Operation apiTokenDetails
      *
-     * Get your API-Token
+     * Get your API-Token.
      *
      * @param  string $username username (required)
      * @param  string $password password (required)
@@ -135,7 +135,7 @@ class UserApi
     /**
      * Operation apiTokenDetailsWithHttpInfo
      *
-     * Get your API-Token
+     * Get your API-Token.
      *
      * @param  string $username (required)
      * @param  string $password (required)
@@ -222,7 +222,7 @@ class UserApi
     /**
      * Operation apiTokenDetailsAsync
      *
-     * Get your API-Token
+     * Get your API-Token.
      *
      * @param  string $username (required)
      * @param  string $password (required)
@@ -243,7 +243,7 @@ class UserApi
     /**
      * Operation apiTokenDetailsAsyncWithHttpInfo
      *
-     * Get your API-Token
+     * Get your API-Token.
      *
      * @param  string $username (required)
      * @param  string $password (required)

@@ -4,7 +4,7 @@ All URIs are relative to https://www.livewatch.de.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**apiTokenDetails()**](UserApi.md#apiTokenDetails) | **POST** /api/user/token | Get your API-Token
+[**apiTokenDetails()**](UserApi.md#apiTokenDetails) | **POST** /api/user/token | Get your API-Token.
 
 
 ## `apiTokenDetails()`
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 apiTokenDetails($username, $password): \LivewatchApi\Model\ApiToken
 ```
 
-Get your API-Token
+Get your API-Token.
 
 Provide your access credentials and return api token
 

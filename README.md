@@ -98,7 +98,7 @@ Class | Method | HTTP request | Description
 *CheckApi* | [**checksByTag**](docs/Api/CheckApi.md#checksbytag) | **POST** /api/check/checks/tag | Get report of checks by Tag
 *CheckApi* | [**setCheckState**](docs/Api/CheckApi.md#setcheckstate) | **POST** /api/check/enable/{uuid}/{state} | Enable or disable a check
 *GeneralApi* | [**listMonitoringIPs**](docs/Api/GeneralApi.md#listmonitoringips) | **GET** /api/general/listMonitoringIPs | List all our IPs with details
-*UserApi* | [**apiTokenDetails**](docs/Api/UserApi.md#apitokendetails) | **POST** /api/user/token | Get your API-Token
+*UserApi* | [**apiTokenDetails**](docs/Api/UserApi.md#apitokendetails) | **POST** /api/user/token | Get your API-Token.
 
 ## Models
 
@@ -131,5 +131,5 @@ vendor/bin/phpunit
 ```
 
 - API version: `1.0.0`
-    - Package version: `1.1.2`
+    - Package version: `1.1.3`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`
